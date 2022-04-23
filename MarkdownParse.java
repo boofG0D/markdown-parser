@@ -24,7 +24,7 @@ public class MarkdownParse {
             if(openParen < 0){
                 return toReturn;
             }
-            if(openParen - closeBracket > 0){
+            if(openParen - closeBracket > 1){
                 return toReturn;
             }
             int closeParen = markdown.indexOf(")", openParen);
