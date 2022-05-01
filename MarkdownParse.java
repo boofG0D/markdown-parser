@@ -12,12 +12,9 @@ public class MarkdownParse {
         // find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
-            int imgFinder = markdown.indexOf("!", currentIndex);
-            if(imgFinder > 0){
-                return toReturn;
-            }
             int openBracket = markdown.indexOf("[", currentIndex);
-            if(openBracket < 0){
+            int exClam = markdown.indexOf("!", currentIndex);
+            if(openBracket < 0 || exClam-openBracket == 1){
                 return toReturn;
             }
             int closeBracket = markdown.indexOf("]", openBracket);
