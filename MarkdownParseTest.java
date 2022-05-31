@@ -10,19 +10,19 @@ import org.junit.*;
 public class MarkdownParseTest {
     @Test
     public void snip1Test() throws IOException {
-        String snip1Content = Files.readString(Path.of("snip1.md"));
+        String snip1Content = Files.readString(Path.of("./snip1.md"));
         assertEquals(List.of("url.com", "`google.com", "google.com", "ucsd.edu"), MarkdownParse.getLinks(snip1Content));
     } 
 
     @Test
     public void snip2Test() throws IOException {
-        String snip2Content = Files.readString(Path.of("snip2.md"));
+        String snip2Content = Files.readString(Path.of("./snip2.md"));
         assertEquals(List.of("url.com", "`google.com", "google.com", "ucsd.edu"), MarkdownParse.getLinks(snip2Content));
     }
 
     @Test
     public void snip3Test() throws IOException {
-        String snip3Content = Files.readString(Path.of("snip3.md"));
+        String snip3Content = Files.readString(Path.of("./snip3.md"));
         assertEquals(List.of("url.com", "`google.com", "google.com", "ucsd.edu"), MarkdownParse.getLinks(snip3Content));
     }
 
