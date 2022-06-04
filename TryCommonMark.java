@@ -2,6 +2,14 @@ import org.commonmark.node.*;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
+class NewVisitor extends AbstractVisitor {
+    @Override
+    int linkCount = 0;
+    public void visit(Link link){
+        linkCount += text.getLiteral().split()
+    }
+}
+
 class WordCountVisitor extends AbstractVisitor {
         int wordCount = 0;
     
@@ -21,16 +29,18 @@ public class TryCommonMark {
     
     
     public static void main(String[] args) {
+        //parses file
         Parser parser = Parser.builder().build();
         Node document = parser.parse("This is *Sparta*");
         HtmlRenderer renderer = HtmlRenderer.builder().build();
         renderer.render(document);  // "<p>This is <em>Sparta</em></p>\n"
         System.out.println(renderer.render(document));
+        
+        //counts # of words
         Node node = parser.parse("Example\n=======\n\nSome more text");
         WordCountVisitor visitor = new WordCountVisitor();
         node.accept(visitor);
         System.out.println(visitor.wordCount);  // 4
-
     }
     
 }
