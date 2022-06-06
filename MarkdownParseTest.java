@@ -1,5 +1,6 @@
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
@@ -8,6 +9,12 @@ import java.nio.file.*;
 import org.junit.*;
 
 public class MarkdownParseTest {
+    @Test
+    public void filesTest() throws IOException {
+        File bruh = new File("test-files/");
+        String content = getLnks(bruh);
+    }
+    
     @Test
     public void snip1Test() throws IOException {
         String snip1Content = Files.readString(Path.of("./snip1.md"));

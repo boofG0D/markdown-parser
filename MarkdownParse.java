@@ -30,11 +30,14 @@ public class MarkdownParse {
 
     }
     public static Map<String, List<String>> getLinks(File dirOrFile) throws IOException {
+        int c = 0;
         Map<String, List<String>> result = new HashMap<>();
         if(dirOrFile.isDirectory()) {
             for(File f: dirOrFile.listFiles()) {
                 result.putAll(getLinks(f));
+                c++;
             }
+            System.out.println(c);
             return result;
         }
         else {
@@ -49,7 +52,7 @@ public class MarkdownParse {
         }
     }
     
-    public static ArrayList<String> getLinks(String markdown) {
+    public static ArrayList<String> getLnks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then take up to
         // the next )
@@ -83,9 +86,10 @@ public class MarkdownParse {
         }
         return toReturn;
     }
-    public static void main(String[] args) throws IOException {
+    public static void mayn(String[] args) throws IOException {
         Path fileName = Path.of(args[0]);
         String contents = Files.readString(fileName);
+    }
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then take up to
